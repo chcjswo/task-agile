@@ -79,6 +79,14 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -126,20 +134,20 @@
 							</arguments>
 						</configuration>
 					</execution>
-					<execution>
-						<id>frontend e2e test</id>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<phase>integration-test</phase>
-						<configuration>
-							<executable>npm</executable>
-							<arguments>
-								<argument>run</argument>
-								<argument>test:e2e</argument>
-							</arguments>
-						</configuration>
-					</execution>
+<!--					<execution>-->
+<!--						<id>frontend e2e test</id>-->
+<!--						<goals>-->
+<!--							<goal>exec</goal>-->
+<!--						</goals>-->
+<!--						<phase>integration-test</phase>-->
+<!--						<configuration>-->
+<!--							<executable>npm</executable>-->
+<!--							<arguments>-->
+<!--								<argument>run</argument>-->
+<!--								<argument>test:e2e</argument>-->
+<!--							</arguments>-->
+<!--						</configuration>-->
+<!--					</execution>-->
 				</executions>
 				<configuration>
 					<workingDirectory>${basedir}/frontend</workingDirectory>
@@ -240,18 +248,9 @@
 					</filesets>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.springframework.boot</groupId>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 
