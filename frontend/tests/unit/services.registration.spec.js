@@ -13,7 +13,7 @@ describe('services/registration', () => {
   it('should pass the response to caller when request succeeded', () => {
     expect.assertions(2);
     moxios.wait(() => {
-      let request = moxios.request.mostRecent();
+      let request = moxios.requests.mostRecent();
       expect(request).toBeTruthy();
       request.respondWith({
         status: 200,
@@ -24,4 +24,21 @@ describe('services/registration', () => {
       expect(data.result).toEqual('success');
     });
   });
+
+  it('should propagate the error to caller when request failed', () => {
+    expect.assertions(2);
+    moxios.wait(() => {
+      let request = moxios.requests.mostRecent();
+      expect(request).toBeTruthy();
+      request.reject({
+        status: 400,
+        response: {result: 'Bad Request'}
+      });
+    });
+    return registrationService.register().then(data => {
+      expect(data.result).toEqual('Bad Request');
+    });
+  });
+
+
 });
