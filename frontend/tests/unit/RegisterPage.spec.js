@@ -81,11 +81,11 @@ describe('RegisterPage.vue', () => {
     });
   });
 
-  it('should fail when it is not a new user', () => {
+  it('should fail when it is not a new user', async () => {
     wrapper.vm.form.emailAddress = 'chcjswo@test.com';
     expect(wrapper.find('.failed').isVisible()).toBe(false);
     wrapper.vm.submitForm();
-    wrapper.vm.$nextTick(() => {
+    await wrapper.vm.$nextTick(() => {
       expect(wrapper.find('.failed').isVisible()).toBe(true);
     });
   });
