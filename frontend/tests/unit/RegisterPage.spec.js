@@ -1,9 +1,11 @@
 import {createLocalVue, mount} from '@vue/test-utils';
 import RegisterPage from "@/views/RegisterPage";
 import VueRouter from "vue-router";
+import Vuelidate from "vuelidate/src";
+import registrationService from '@/services/registration';
 
 const localVue = createLocalVue();
-localVue.use(VueRouter);
+localVue.use(Vuelidate);
 const router = new VueRouter();
 
 jest.mock('@/service/registration');
@@ -86,6 +88,15 @@ describe('RegisterPage.vue', () => {
     wrapper.vm.$nextTick(() => {
       expect(wrapper.find('.failed').isVisible()).toBe(true);
     });
+  });
+
+  it('should fail when the email address is invalid', () => {
+    const spy = jest.spyOn(registrationService, 'register');
+    wrapper.vm.form.emailAddress = 'chcjswo-test';
+    wrapper.vm.submitForm();
+    expect(spy).not.toHaveBeenCalled();
+    spy.mockReset();
+    spy.mockRestore();
   });
 
 });
