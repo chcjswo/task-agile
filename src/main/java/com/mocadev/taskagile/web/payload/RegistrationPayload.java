@@ -1,5 +1,6 @@
 package com.mocadev.taskagile.web.payload;
 
+import com.mocadev.taskagile.web.api.RegistrationCommand;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -27,5 +28,9 @@ public class RegistrationPayload {
 	@Size(min = 6, max = 30, message = "6 ~ 30 사이로 해")
 	@NotNull
 	private String password;
+
+	public RegistrationCommand toCommand() {
+		return new RegistrationCommand(this.username, this.emailAddress, this.password);
+	}
 
 }
