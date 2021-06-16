@@ -1,5 +1,8 @@
 package com.mocadev.taskagile.web.api;
 
+import com.mocadev.taskagile.domain.application.commands.RegistrationCommand;
+import com.mocadev.taskagile.domain.model.user.RegistrationException;
+
 /**
  * @author chcjswo
  * @version 1.0.0

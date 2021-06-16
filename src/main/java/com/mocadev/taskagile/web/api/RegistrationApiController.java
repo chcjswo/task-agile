@@ -1,5 +1,8 @@
 package com.mocadev.taskagile.web.api;
 
+import com.mocadev.taskagile.domain.model.user.EmailAddressExistsException;
+import com.mocadev.taskagile.domain.model.user.RegistrationException;
+import com.mocadev.taskagile.domain.model.user.UsernameExistsException;
 import com.mocadev.taskagile.web.payload.RegistrationPayload;
 import com.mocadev.taskagile.web.results.ApiResult;
 import com.mocadev.taskagile.web.results.Result;
@@ -31,9 +34,14 @@ public class RegistrationApiController {
 			service.register(payload.toCommand());
 			return Result.created();
 		} catch (RegistrationException e) {
-			return Result.fail("error");
+			String errorMessage = "Registration failed";
+			if (e instanceof UsernameExistsException) {
+				errorMessage = "Username already exists";
+			} else if (e instanceof EmailAddressExistsException) {
+				errorMessage = "Email address already exists";
+			}
+			return Result.fail(errorMessage);
 		}
 	}
-
 
 }

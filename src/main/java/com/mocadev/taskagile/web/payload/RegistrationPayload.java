@@ -1,6 +1,6 @@
 package com.mocadev.taskagile.web.payload;
 
-import com.mocadev.taskagile.web.api.RegistrationCommand;
+import com.mocadev.taskagile.domain.application.commands.RegistrationCommand;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

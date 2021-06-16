@@ -1,4 +1,4 @@
-package com.mocadev.taskagile.web.api;
+package com.mocadev.taskagile.domain.model.user;
 
 /**
  * @author chcjswo
@@ -8,5 +8,4 @@ package com.mocadev.taskagile.web.api;
  * @since 2021-06-16
  **/
 public class RegistrationException extends Exception {
-
 }

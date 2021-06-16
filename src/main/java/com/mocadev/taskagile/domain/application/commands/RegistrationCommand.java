@@ -1,4 +1,4 @@
-package com.mocadev.taskagile.web.api;
+package com.mocadev.taskagile.domain.application.commands;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
