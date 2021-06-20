@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.mocadev.taskagile.config.SecurityConfiguration;
 import com.mocadev.taskagile.domain.model.user.EmailAddressExistsException;
 import com.mocadev.taskagile.domain.model.user.UsernameExistsException;
 import com.mocadev.taskagile.utils.JsonUtils;
@@ -18,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -30,6 +32,8 @@ import org.springframework.test.web.servlet.MockMvc;
  **/
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(RegistrationApiController.class)
+@ContextConfiguration(classes = {SecurityConfiguration.class,
+	RegistrationApiController.class})
 class RegistrationApiControllerTest {
 
 	@Autowired
